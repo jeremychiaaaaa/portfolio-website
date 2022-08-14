@@ -28,11 +28,10 @@ export const Project2 = () => {
     const [playing,setPlaying] = useState(-1)
     const [light,setLight] = useState(true)
     const [clickImage,setClickImage] = useState(false)
-    const blurStyle = {
-        filter: 'blur(4px)',
-      transform: 'scale(0.8) translateX(10px)'
-    }
 
+    const videoStyle = {
+        transform: 'translateX(-10px)'
+    }
 
 
     useEffect(() => {
@@ -76,7 +75,7 @@ export const Project2 = () => {
                       <ReactPlayer url={i.video} playing={playing === 1 ? true : false} loop={true}
                          width={'100%'}  height={playing === index ? '95%' : '65%'}
                         light={playing === index ? '' : i.src}
-                         style={clickImage ? playing === index ? '' : blurStyle : ''}   
+                     style={playing === 1 && videoStyle}
                         
                         
                         /> :     
@@ -106,7 +105,7 @@ export const Project2 = () => {
                       <ReactPlayer url={i.video} playing={playing === 3 ? true : false} loop={true}
                          width={'100%'}  height={playing === 3 ? '95%' : '65%'}
                         light={playing === 3 ? '' : i.src}
-                        
+                        style={playing === 3 && videoStyle}
                         
                         /> :     
                          <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 3 ? 'blur(4px)' : 'blur(0)', transform: playing === 3 ? 'scale(0.8)' : 'scale(1)'}} />  }
@@ -122,7 +121,7 @@ export const Project2 = () => {
 
                 {doctorApp.filter((i,index)=>index<9&&index>=6).map((i,index) => (
                      <div className='flex flex-col justify-center items-center h-full '>
-                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     <span className='md:text-2xl  text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-1 cursor-pointer ' 
                      onClick={() => {
                        playing === -1 ? setPlaying(2) : setPlaying(-1)
                         console.log(playing)
@@ -135,7 +134,7 @@ export const Project2 = () => {
                       <ReactPlayer url={i.video} playing={playing === 2 ? true : false} loop={true}
                          width={'100%'}  height={playing === 2 ? '95%' : '65%'}
                         light={playing === 2 ? '' : i.src}
-                         
+                         style={playing === 2 && videoStyle}
                         
                         
                         /> :     

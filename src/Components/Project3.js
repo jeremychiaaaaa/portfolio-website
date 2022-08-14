@@ -1,14 +1,16 @@
 import React, {useState,useEffect} from 'react'
 import { motion, useAnimation } from "framer-motion";
-
+import ReactPlayer from 'react-player'
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
-
+import {BsPlayBtn,BsPauseBtn,BsStopBtn} from 'react-icons/bs'
 
 
 import FireBase from '../Assets/firebase.png'
-
-
+import HomeScreenVideo from '../Videos/home-screen-recording.mp4'
+import AddReviewVideo from '../Videos/add-review-recording.mp4'
+import ProductScreenVideo from '../Videos/product-screen-recording.mp4'
+import CheckOutRecording from '../Videos/check-out-recording.mp4'
 import ReactPicture from '../Assets/react.png'
 
 import HomeScreen from '../Assets/e-home-screen.png'
@@ -29,6 +31,14 @@ import Redux from '../Assets/react-redux-1.png'
 
 export const Project3 = () => {
     const[phone,setPhone] = useState(window.matchMedia("(max-width: 768px)").matches)
+  
+    const [playing,setPlaying] = useState(-1)
+    const [light,setLight] = useState(true)
+    const [clickImage,setClickImage] = useState(false)
+
+    const videoStyle = {
+        transform: 'translateX(-10px)'
+    }
 
     useEffect(() => {
       
@@ -49,59 +59,125 @@ export const Project3 = () => {
                      swipe={true}
               
          >
-             <div className='w-full h-full flex flex-col justify-center items-center '>
-            
-             <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
-             {fashionScreenShot.filter((i,index)=>index<3&&index>=0).map((i,index) => (
-                  <div className='flex flex-col justify-center items-center '>
-                  <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 '>{i.title}</span>
-                  <img src={i.src} alt='screenshot' className='object-cover w-[95%] pp:w-[90%] pp:pt-2 '  />  
-                  </div>
-             ))}
+              <div className='w-full h-full relative flex flex-col justify-center items-center '>
+                
+                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
 
-             
-             </div>
-             </div>
-             <div className='w-full h-full flex flex-col justify-center items-center '>
-            
-            <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
-            {fashionScreenShot.filter((i,index)=>index<6 && index >= 3).map((i,index) => (
-                 <div className='flex flex-col justify-center items-center '>
-                 <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 '>{i.title}</span>
-                 <img src={i.src} alt='screenshot' className='object-cover w-[95%] pp:w-[90%] pp:pt-2 '  />  
-                 </div>
-            ))}
+                {fashionScreenShot.filter((i,index)=>index<3&&index>=0).map((i,index) => (
+                     <div className='flex flex-col justify-center items-center h-full '>
+                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     onClick={() => {
+                       playing === -1 ? setPlaying(index) : setPlaying(-1)
+                        console.log(playing)
+                     }}
+                     
+                     >{i.title} {index === 1 ? playing === 1 ? <BsStopBtn /> : <BsPlayBtn /> : null }</span>
+                    
+                     {index === 1 ? 
+                     
+                      <ReactPlayer url={i.video} playing={playing === 1 ? true : false} loop={true}
+                         width={'100%'}  height={playing === index ? '95%' : '65%'}
+                        light={playing === index ? '' : i.src}
+                    
+                        
+                         style={videoStyle}
+                        /> :     
+                         <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 1 ? 'blur(4px)' : 'blur(0)', transform: playing === 1 ? 'scale(0.8)' : 'scale(1)'}} />  }
+                     </div>
+                ))}
 
-            
-            </div>
-            </div>
-             
-            <div className='w-full h-full flex flex-col justify-center items-center '>
-            
-            <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
-            {fashionScreenShot.filter((i,index)=>index<9&&index>=6).map((i,index) => (
-                 <div className='flex flex-col justify-center items-center '>
-                 <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 '>{i.title}</span>
-                 <img src={i.src} alt='screenshot' className='object-cover w-[95%] pp:w-[90%] pp:pt-2 '  />  
-                 </div>
-            ))}
+                
+                </div>
+                </div>
+                <div className='w-full h-full relative flex flex-col justify-center items-center '>
+                
+                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
 
-            
-            </div>
-            </div>
-            <div className='w-full h-full flex flex-col justify-center items-center '>
-            
-            <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
-            {fashionScreenShot.filter((i,index)=>index<12&&index>=9).map((i,index) => (
-                 <div className='flex flex-col justify-center items-center '>
-                 <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 '>{i.title}</span>
-                 <img src={i.src} alt='screenshot' className='object-cover w-[95%] pp:w-[90%] pp:pt-2 '  />  
-                 </div>
-            ))}
+                {fashionScreenShot.filter((i,index)=>index<6&&index>=3).map((i,index) => (
+                     <div className='flex flex-col justify-center items-center h-full '>
+                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     onClick={() => {
+                       playing === -1 ? setPlaying(3) : setPlaying(-1)
+                        console.log(playing)
+                     }}
+                     
+                     >{i.title} {index === 1 ? playing === 3 ? <BsStopBtn /> : <BsPlayBtn /> : null }</span>
+                    
+                     {index === 1 ? 
+                     
+                      <ReactPlayer url={i.video} playing={playing === 3 ? true : false} loop={true}
+                         width={'100%'}  height={playing === 3 ? '95%' : '65%'}
+                        light={playing === 3 ? '' : i.src}
+                        style={playing === 3 && videoStyle}
+                        
+                        /> :     
+                         <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 3 ? 'blur(4px)' : 'blur(0)', transform: playing === 3 ? 'scale(0.8)' : 'scale(1)'}} />  }
+                     </div>
+                ))}
 
-            
-            </div>
-            </div>
+                
+                </div>
+                </div>
+                <div className='w-full h-full relative flex flex-col justify-center items-center '>
+                
+                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
+
+                {fashionScreenShot.filter((i,index)=>index<9&&index>=6).map((i,index) => (
+                     <div className='flex flex-col justify-center items-center h-full '>
+                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     onClick={() => {
+                       playing === -1 ? setPlaying(2) : setPlaying(-1)
+                        console.log(playing)
+                     }}
+                     
+                     >{i.title} {index === 1 ? playing === 2 ? <BsStopBtn /> : <BsPlayBtn /> : null }</span>
+                    
+                     {index === 1 ? 
+                     
+                      <ReactPlayer url={i.video} playing={playing === 2 ? true : false} loop={true}
+                         width={'100%'}  height={playing === 2 ? '95%' : '65%'}
+                        light={playing === 2 ? '' : i.src}
+                         
+                        style={playing === 2&& videoStyle}
+                        
+                        /> :     
+                         <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 2 ? 'blur(4px)' : 'blur(0)', transform: playing === 2 ? 'scale(0.8)' : 'scale(1)'}} />  }
+                     </div>
+                ))}
+
+                
+                </div>
+                </div>
+                <div className='w-full h-full relative flex flex-col justify-center items-center '>
+                
+                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
+
+                {fashionScreenShot.filter((i,index)=>index<12&&index>=9).map((i,index) => (
+                     <div className='flex flex-col justify-center items-center h-full '>
+                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     onClick={() => {
+                       playing === -1 ? setPlaying(4) : setPlaying(-1)
+                        console.log(playing)
+                     }}
+                     
+                     >{i.title} {index === 1 ? playing === 4 ? <BsStopBtn /> : <BsPlayBtn /> : null }</span>
+                    
+                     {index === 1 ? 
+                     
+                      <ReactPlayer url={i.video} playing={playing === 4 ? true : false} loop={true}
+                         width={'100%'}  height={playing === 4 ? '95%' : '65%'}
+                        light={playing === 4 ? '' : i.src}
+                         style={playing === 4 && videoStyle}
+                        
+                        
+                        /> :     
+                         <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 4 ? 'blur(4px)' : 'blur(0)', transform: playing === 4 ? 'scale(0.8)' : 'scale(1)'}} />  }
+                     </div>
+                ))}
+
+                
+                </div>
+                </div>
          </Carousel>
          
         </div>
@@ -159,13 +235,14 @@ export const Project3 = () => {
 const fashionScreenShot = [
     {
         id:'1',
-        src:HomeScreen,
-        title:'Home'
+        src:HomeScreen2,
+        title:'Explore'
     },
     {
         id:'2',
-        src:HomeScreen2,
-        title:'Explore'
+        src:HomeScreen,
+        title:'Home',
+        video:HomeScreenVideo
     },
     {
         id:'3',
@@ -180,7 +257,8 @@ const fashionScreenShot = [
     {
         id:'5',
         src:ProductScreen,
-        title:'Products'
+        title:'Products',
+        video:ProductScreenVideo
     },
     {
         id:'6',
@@ -190,28 +268,32 @@ const fashionScreenShot = [
     {
         id:'7',
         src:ProductReview,
-        title:'Reviews'
+        title:'Reviews',
+        
     },
     {
         id:'8',
         src:CheckOut01,
-        title:'CheckOut(1)'
+        title:'CheckOut',
+        video:CheckOutRecording
     },
     {
         id:'9',
         src:CheckOut02,
-        title:'CheckOut(2)'
+        title:'CheckOut(2)',
+       
     },
     {
         id:'10',
-        src:PastOrderScreen,
-        title:'History'
+        src:AddReview,
+        title:'Rate'
     },
 
     {
         id:'11',
-        src:AddReview,
-        title:'Rate'
+        src:PastOrderScreen,
+        title:'Orders',
+         video:AddReviewVideo
     },
 
     {
