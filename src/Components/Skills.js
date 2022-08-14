@@ -15,7 +15,7 @@ function Skills() {
   const [ref,inView] = useInView()
   
   const variant = {
-    visible: {opacity:1,scale:1,transition: {duration:0.25,
+    visible: {opacity:1,scale:1,transition: {duration:0.15,
     ease: [0.545,0.045,0.355,1]  
     
     },},

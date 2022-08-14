@@ -39,7 +39,9 @@ export const Project3 = () => {
     const videoStyle = {
         transform: 'translateX(-10px)'
     }
-
+    const placeHolderStyle = {
+        transform: 'translateY(5px) scale(1.02)'
+    }
     useEffect(() => {
       
       window.matchMedia("(max-width: 768px)").addEventListener('change', e => setPhone(e.matches))
@@ -76,11 +78,11 @@ export const Project3 = () => {
                      {index === 1 ? 
                      
                       <ReactPlayer url={i.video} playing={playing === 1 ? true : false} loop={true}
-                         width={'100%'}  height={playing === index ? '95%' : '65%'}
+                         width={'100%'}  height={phone  ? playing === index ? '95%' : '62%' : '65%'}
                         light={playing === index ? '' : i.src}
-                    
+                            
                         
-                         style={videoStyle}
+                         style={phone ? playing === 1 ? videoStyle : placeHolderStyle:''}
                         /> :     
                          <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 1 ? 'blur(4px)' : 'blur(0)', transform: playing === 1 ? 'scale(0.8)' : 'scale(1)'}} />  }
                      </div>
@@ -106,9 +108,9 @@ export const Project3 = () => {
                      {index === 1 ? 
                      
                       <ReactPlayer url={i.video} playing={playing === 3 ? true : false} loop={true}
-                         width={'100%'}  height={playing === 3 ? '95%' : '65%'}
+                         width={'100%' } height={phone  ? playing === 3 ? '95%' : '62%' : '65%'}
                         light={playing === 3 ? '' : i.src}
-                        style={playing === 3 && videoStyle}
+                        style={phone ? playing === 3 ? videoStyle : placeHolderStyle:''}
                         
                         /> :     
                          <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 3 ? 'blur(4px)' : 'blur(0)', transform: playing === 3 ? 'scale(0.8)' : 'scale(1)'}} />  }
@@ -135,10 +137,10 @@ export const Project3 = () => {
                      {index === 1 ? 
                      
                       <ReactPlayer url={i.video} playing={playing === 2 ? true : false} loop={true}
-                         width={'100%'}  height={playing === 2 ? '95%' : '65%'}
+                         width={'100%'}  height={phone  ? playing === 2 ? '95%' : '62%' : '65%'}
                         light={playing === 2 ? '' : i.src}
                          
-                        style={playing === 2&& videoStyle}
+                        style={phone ? playing === 2 ? videoStyle : placeHolderStyle:''}
                         
                         /> :     
                          <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 2 ? 'blur(4px)' : 'blur(0)', transform: playing === 2 ? 'scale(0.8)' : 'scale(1)'}} />  }
@@ -165,9 +167,11 @@ export const Project3 = () => {
                      {index === 1 ? 
                      
                       <ReactPlayer url={i.video} playing={playing === 4 ? true : false} loop={true}
-                         width={'100%'}  height={playing === 4 ? '95%' : '65%'}
+                         width={'100%'} height={phone  ? playing === 4 ? '95%' : '62%' : '65%'}
                         light={playing === 4 ? '' : i.src}
-                         style={playing === 4 && videoStyle}
+                        
+                        style={phone ? playing === 4 ? videoStyle : placeHolderStyle:''}
+                       
                         
                         
                         /> :     

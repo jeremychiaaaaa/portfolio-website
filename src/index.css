@@ -25,7 +25,16 @@ html, body {
   transform: translate(0,-3px);
   transition-duration: 0.35s;
 
+  
 }
+.linkedin-icon:hover{
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👀</text></svg>")10 0,auto;
+
+}
+
+
+
+
 .linkedin-after::after {
   content:'';
   display: block;
@@ -33,6 +42,7 @@ html, body {
   height:90px;
   margin:0 auto;
   background-color:aliceblue;
+  
 
 }
 .linkedin-after:hover::after {
@@ -55,7 +65,7 @@ html, body {
   background-color:aliceblue;
 }
 .icon:hover,
-.icon:focus,
+
 #icon:hover
 
 {
@@ -159,6 +169,33 @@ mix-blend-mode: screen;
 .carousel.carousel.carousel-slider .control-arrow{
   z-index:10;
 }
+
+
+
+#home:hover:after,
+#about:hover:after,
+#skills:hover:after,
+#work:hover:after,
+#contact:hover:after
+
+
+{
+  content:'';
+  opacity:1;
+  position: absolute;
+bottom:0;
+left:0;
+  width:80%;
+  height:3px;
+  background-color: #ff4d5a;
+margin:-2px 10%;
+  transform:translateX(0);
+  animation: fadeInLeft 0.24s;
+}
+
+
+
+
 
 .carousel .control-next.control-arrow::before {
   content:'\2192' !important;

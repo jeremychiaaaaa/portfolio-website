@@ -44,7 +44,7 @@ const Contact = () => {
         <form ref={form} onSubmit={sendEmail} className='flex flex-col sp:px-[100px] pp:mx-[30px]   max-w-[900px] w-full relative'>
             <div className='pb-8 text-gray-300'>
                 <h2 className='text-4xl font-bold inline border-b-4 border-pink '>Contact</h2>
-                <p className=' my-4 text-xl font-body md:w-[85%] '>// Feel free to submit the form below or contact me at my email - chiajeremy1@gmail.com </p>
+                <p className=' my-4 text-xl font-body md:w-[85%] '>// Feel free to submit the form below or contact me at my email : chiajeremy1@gmail.com </p>
             </div>
             <input className='bg-[#ccd6f6] p-2 font-body z-9' type='text' placeHolder='Name' name='fullName'   />
             <input className='bg-[#ccd6f6] p-2 font-body my-4 z-9' type='email' placeHolder='Email' name='email' />
