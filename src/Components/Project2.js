@@ -1,12 +1,12 @@
 import React, {useState,useEffect} from 'react'
 import { motion, useAnimation } from "framer-motion";
-
+import {BsPlayBtn} from 'react-icons/bs'
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
-
+import ReactPlayer from 'react-player'
 import FireBase from '../Assets/firebase.png'
 import ReactPicture from '../Assets/react.png'
-
+import Video1 from '../Videos/trial1.mp4'
 import Redux from '../Assets/react-redux-1.png'
 import ProfilePage from '../Assets/profile_page_ss.png'
 import ViewAppointment from '../Assets/view_appointments_ss.png'
@@ -20,6 +20,16 @@ import TravelHub3 from '../Assets/travelhub-3.png'
 export const Project2 = () => {
 
     const[phone,setPhone] = useState(window.matchMedia("(max-width: 768px)").matches)
+    
+    const [playing,setPlaying] = useState(-1)
+    const [light,setLight] = useState(true)
+    const [clickImage,setClickImage] = useState(false)
+    const blurStyle = {
+        filter: 'blur(4px)',
+      transform: 'scale(0.8) translateX(10px)'
+    }
+
+
 
     useEffect(() => {
       
@@ -37,8 +47,42 @@ export const Project2 = () => {
                         stopAutoPlayOnHover={false}
                         autoPlay={false}
                         swipe={true}
-                 
+
             >
+                  
+                    <div style={{width:'100%',height:'100%',position:'absolute',top:'7%',display:'flex', flexDirection:'column'}}>
+                    <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 '>
+                
+
+                    {doctorApp.filter((i,index) => index<3 && index >=0).map((i,index) => (
+                        <div className='flex flex-col justify-center items-center '>
+                        <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex justify-center items-center cursor-pointer' 
+                        onClick={() => {
+                            setClickImage(!clickImage)
+                           playing === -1 ? setPlaying(index) : setPlaying(-1)
+                            
+                        }}>
+                            {i.title}
+                            <BsPlayBtn className='ml-4'  /> 
+                        </span>
+                        <ReactPlayer url={i.video} playing={playing === index ? true : false} loop={true}
+                         width={'100%'} height={'100%'} 
+                        light={playing === index ? '' : i.src}
+                         style={clickImage ? playing === index ? '' : blurStyle : ''}   
+                        /> 
+                       </div>
+    
+                    ))}
+
+
+                  
+                   </div>
+                </div>
+                   
+                  
+
+               
+               
                 <div className='w-full h-full flex flex-col justify-center items-center '>
                
                 <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
@@ -136,17 +180,20 @@ const doctorApp = [
     {
         id:'1',
         src:LandingPage,
-        title:'Welcome'
+        title:'Welcome',
+        video:Video1,
     },
     {
         id:'2',
         src:EHomeScreen,
-        title:'Home'
+        title:'Home',
+        video:Video1,
     },
     {
         id:'3',
         src:DoctorPage,
-        title:'Doctor'
+        title:'Doctor',
+        video:Video1,
     },
     {
         id:'4',

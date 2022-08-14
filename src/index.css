@@ -314,3 +314,23 @@ justify-content: center;
   display:none;
 }
 }
+
+
+.react-player__preview {
+  background-image : url('./Assets/e-home-screen.png');
+background-size: contain !important;
+background-repeat: no-repeat;
+}
+
+.react-player__play-icon {
+  display:none;
+}
+.react-player__shadow {
+  display:none !important;
+}
+video {
+  border-radius: 30px;
+  box-shadow: 0px 0px 0px 5px #1f1f1f, 0px 0px 0px 10px #191919, 0px 0px 0px 5px #111;
+  object-fit: fill;
+  transform: scale(0.9) translateX(10px);
+}
