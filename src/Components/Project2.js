@@ -69,6 +69,14 @@ export const Project2 = () => {
                          width={'100%'} height={'100%'} 
                         light={playing === index ? '' : i.src}
                          style={clickImage ? playing === index ? '' : blurStyle : ''}   
+                        onBuffer={() => (
+                            <div className='w-full h-full bg-black'>
+                                <span>loading...</span>
+                                </div>
+                        )}
+                        onBufferEnd={() => (
+                            console.log('end')
+                        )}
                         /> 
                        </div>
     
