@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState, createContext,useContext,useEffect } from "react";
+import NavBar from "./Components/NavBar";
+import HomePage from "./Components/HomePage";
+import AboutPage from "./Components/AboutPage";
+import Skills from "./Components/Skills";
+import Projects from "./Components/Projects";
+import Contact from "./Components/Contact";
+export const BlurContext = createContext()
 function App() {
+  const context = useContext(BlurContext)
+  const [openPhoneMenu,setOpenPhoneMenu] = useState(false)
+  const[phone,setPhone] = useState(window.matchMedia("(max-width: 768px)").matches)
+  useEffect(() => {
+    window.matchMedia("(max-width: 1060px)").addEventListener('change', e => setPhone(e.matches))
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+    <BlurContext.Provider value={{openPhoneMenu, setOpenPhoneMenu}}>
+      <NavBar/>
+      <HomePage/>
+      <AboutPage/>
+      <Skills/>
+      <Projects />
+      <Contact />
+    </BlurContext.Provider>
     </div>
   );
 }
