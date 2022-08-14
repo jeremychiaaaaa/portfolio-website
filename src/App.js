@@ -14,7 +14,7 @@ function App() {
     window.matchMedia("(max-width: 1060px)").addEventListener('change', e => setPhone(e.matches))
   },[])
   return (
-    <div >
+    <div style={{overflowX:'hidden'}} >
     <BlurContext.Provider value={{openPhoneMenu, setOpenPhoneMenu}}>
       <NavBar/>
       <HomePage/>

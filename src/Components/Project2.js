@@ -1,12 +1,12 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, Suspense} from 'react'
 import { motion, useAnimation } from "framer-motion";
-import {BsPlayBtn} from 'react-icons/bs'
+import {BsPlayBtn,BsPauseBtn,BsStopBtn} from 'react-icons/bs'
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
 import ReactPlayer from 'react-player'
 import FireBase from '../Assets/firebase.png'
 import ReactPicture from '../Assets/react.png'
-import Video1 from '../Videos/trial1.mp4'
+
 import Redux from '../Assets/react-redux-1.png'
 import ProfilePage from '../Assets/profile_page_ss.png'
 import ViewAppointment from '../Assets/view_appointments_ss.png'
@@ -17,6 +17,10 @@ import EHomeScreen from '../Assets/home_screen_ss.png'
 import TravelHub1 from '../Assets/travelhub-1.png'
 import TravelHub2 from '../Assets/travelhub-2.png'
 import TravelHub3 from '../Assets/travelhub-3.png'
+import DoctorRecording from '../Videos/doctor-recording.mp4'
+import LogInRecording from '../Videos/login-recording.mp4'
+import TravelHubRecording from '../Videos/travel-hub-recording.mp4'
+
 export const Project2 = () => {
 
     const[phone,setPhone] = useState(window.matchMedia("(max-width: 768px)").matches)
@@ -50,87 +54,98 @@ export const Project2 = () => {
 
             >
                   
-                    <div style={{width:'100%',height:'100%',position:'absolute',top:'7%',display:'flex', flexDirection:'column'}}>
-                    <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 '>
-                
 
-                    {doctorApp.filter((i,index) => index<3 && index >=0).map((i,index) => (
-                        <div className='flex flex-col justify-center items-center '>
-                        <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex justify-center items-center cursor-pointer' 
-                        onClick={() => {
-                            setClickImage(!clickImage)
-                           playing === -1 ? setPlaying(index) : setPlaying(-1)
-                            
-                        }}>
-                            {i.title}
-                            <BsPlayBtn className='ml-4'  /> 
-                        </span>
-                        <ReactPlayer url={i.video} playing={playing === index ? true : false} loop={true}
-                         width={'100%'} height={'100%'} 
+               
+               
+                <div className='w-full h-full relative flex flex-col justify-center items-center '>
+                
+                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
+
+                {doctorApp.filter((i,index)=>index<3&&index>=0).map((i,index) => (
+                     <div className='flex flex-col justify-center items-center h-full '>
+                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     onClick={() => {
+                       playing === -1 ? setPlaying(index) : setPlaying(-1)
+                        console.log(playing)
+                     }}
+                     
+                     >{i.title} {index === 1 ? playing === 1 ? <BsStopBtn /> : <BsPlayBtn /> : null }</span>
+                    
+                     {index === 1 ? 
+                     
+                      <ReactPlayer url={i.video} playing={playing === 1 ? true : false} loop={true}
+                         width={'100%'}  height={playing === index ? '95%' : '65%'}
                         light={playing === index ? '' : i.src}
                          style={clickImage ? playing === index ? '' : blurStyle : ''}   
-                        onBuffer={() => (
-                            <div className='w-full h-full bg-black'>
-                                <span>loading...</span>
-                                </div>
-                        )}
-                        onBufferEnd={() => (
-                            console.log('end')
-                        )}
-                        /> 
-                       </div>
-    
-                    ))}
-
-
-                  
-                   </div>
-                </div>
-                   
-                  
-
-               
-               
-                <div className='w-full h-full flex flex-col justify-center items-center '>
-               
-                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
-                {doctorApp.filter((i,index)=>index<3&&index>=0).map((i,index) => (
-                     <div className='flex flex-col justify-center items-center '>
-                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 '>{i.title}</span>
-                     <img src={i.src} alt='screenshot' className='object-cover w-[95%] pp:w-[90%] pp:pt-2 '  />  
+                        
+                        
+                        /> :     
+                         <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 1 ? 'blur(4px)' : 'blur(0)', transform: playing === 1 ? 'scale(0.8)' : 'scale(1)'}} />  }
                      </div>
                 ))}
 
                 
                 </div>
                 </div>
-                <div className='w-full h-full flex flex-col justify-center items-center '>
-               
-               <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
-               {doctorApp.filter((i,index)=>index<6 && index >= 3).map((i,index) => (
-                    <div className='flex flex-col justify-center items-center '>
-                    <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 '>{i.title}</span>
-                    <img src={i.src} alt='screenshot' className='object-cover w-[95%] pp:w-[90%] pp:pt-2 '  />  
-                    </div>
-               ))}
-
-               
-               </div>
-               </div>
+                <div className='w-full h-full relative flex flex-col justify-center items-center '>
                 
-               <div className='w-full h-full flex flex-col justify-center items-center '>
-               
-               <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
-               {doctorApp.filter((i,index)=>index<9&&index>=6).map((i,index) => (
-                    <div className='flex flex-col justify-center items-center '>
-                    <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 '>{i.title}</span>
-                    <img src={i.src} alt='screenshot' className='object-cover w-[95%] pp:w-[90%] pp:pt-2 '  />  
-                    </div>
-               ))}
+                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
 
-               
-               </div>
-               </div>
+                {doctorApp.filter((i,index)=>index<6&&index>=3).map((i,index) => (
+                     <div className='flex flex-col justify-center items-center h-full '>
+                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     onClick={() => {
+                       playing === -1 ? setPlaying(3) : setPlaying(-1)
+                        console.log(playing)
+                     }}
+                     
+                     >{i.title} {index === 1 ? playing === 3 ? <BsStopBtn /> : <BsPlayBtn /> : null }</span>
+                    
+                     {index === 1 ? 
+                     
+                      <ReactPlayer url={i.video} playing={playing === 3 ? true : false} loop={true}
+                         width={'100%'}  height={playing === 3 ? '95%' : '65%'}
+                        light={playing === 3 ? '' : i.src}
+                        
+                        
+                        /> :     
+                         <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 3 ? 'blur(4px)' : 'blur(0)', transform: playing === 3 ? 'scale(0.8)' : 'scale(1)'}} />  }
+                     </div>
+                ))}
+
+                
+                </div>
+                </div>
+                <div className='w-full h-full relative flex flex-col justify-center items-center '>
+                
+                <div className='w-[100%] lg:w-full mx-auto h-full grid  grid-cols-3 md:gap-[10px] md:px-[10%] md:py-9 ' >
+
+                {doctorApp.filter((i,index)=>index<9&&index>=6).map((i,index) => (
+                     <div className='flex flex-col justify-center items-center h-full '>
+                     <span className='md:text-2xl text-md text-black font-footer md:pb-4 pp:my-2 flex items-center gap-2 cursor-pointer ' 
+                     onClick={() => {
+                       playing === -1 ? setPlaying(2) : setPlaying(-1)
+                        console.log(playing)
+                     }}
+                     
+                     >{i.title} {index === 1 ? playing === 2 ? <BsStopBtn /> : <BsPlayBtn /> : null }</span>
+                    
+                     {index === 1 ? 
+                     
+                      <ReactPlayer url={i.video} playing={playing === 2 ? true : false} loop={true}
+                         width={'100%'}  height={playing === 2 ? '95%' : '65%'}
+                        light={playing === 2 ? '' : i.src}
+                         
+                        
+                        
+                        /> :     
+                         <img src={i.src} alt='screenshot' className='object-contain h-[65%] w-[95%] pp:w-[90%] pp:pt-2 ' style={{filter: playing === 2 ? 'blur(4px)' : 'blur(0)', transform: playing === 2 ? 'scale(0.8)' : 'scale(1)'}} />  }
+                     </div>
+                ))}
+
+                
+                </div>
+                </div>
                
             </Carousel>
             
@@ -187,21 +202,21 @@ export const Project2 = () => {
 const doctorApp = [
     {
         id:'1',
-        src:LandingPage,
-        title:'Welcome',
-        video:Video1,
+        src:EHomeScreen,
+        title:'Home',
+        
     },
     {
         id:'2',
-        src:EHomeScreen,
-        title:'Home',
-        video:Video1,
+        src:LandingPage,
+        title:'Welcome',
+        video:LogInRecording,
     },
     {
         id:'3',
         src:DoctorPage,
         title:'Doctor',
-        video:Video1,
+        
     },
     {
         id:'4',
@@ -211,7 +226,8 @@ const doctorApp = [
     {
         id:'5',
         src:BookAppointment,
-        title:'Booking'
+        title:'Booking',
+        video:DoctorRecording
     },
     {
         id:'6',
@@ -220,17 +236,18 @@ const doctorApp = [
     },
     {
         id:'7',
-        src:TravelHub1,
-        title:'Travel Hub(1)'
+        src:TravelHub2,
+        title:'Travel Hub'
     },
     {
         id:'8',
-        src:TravelHub2,
-        title:'Travel Hub(2)'
+        src:TravelHub1,
+        title:'Travel Hub',
+        video: TravelHubRecording
     },
     {
         id:'9',
         src:TravelHub3,
-        title:'Travel Hub(3)'
+        title:'Travel Hub'
     },
 ]
