@@ -274,9 +274,9 @@ margin:-2px 10%;
 }
 
 .css-1l7c0cy > div > div {
-  display:flex;
-  justify-content: center;
-  align-items: center;
+width: 100%;
+justify-content: center;
+
 }
 
 }

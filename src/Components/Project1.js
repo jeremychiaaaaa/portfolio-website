@@ -42,7 +42,7 @@ export const Project1 = () => {
 
                     <div className='w-full h-full flex flex-col justify-center items-center'>
 
-                    <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-4 pt-6 '>
+                    <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-6 pt-6 '>
                      <img src={KynHomeScreen} alt='screen shot KynHomeScreen' className='object-cover lg:object-contain h-[100%] ' />
                 </div>
  
@@ -50,7 +50,7 @@ export const Project1 = () => {
                  </div>
                  <div className='w-full h-full flex flex-col justify-center items-center'>
 
-                 <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-4 pt-6 '>
+                 <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-6 pt-6 '>
                      <img src={KynArt} className='object-cover lg:object-contain h-[100%]  ' alt='screen shot KynArt'/>
                 </div>
 
@@ -59,7 +59,7 @@ export const Project1 = () => {
                 </div>
                   <div className='w-full h-full flex flex-col justify-center items-center'>
 
-                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-4 pt-6 '>
+                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-6 pt-6 '>
                      <img src={KynManifesto} className='object-cover lg:object-contain h-[100%] ' alt='screen shot KynManifesto'/>
                 </div>
 
@@ -68,7 +68,7 @@ export const Project1 = () => {
                 </div>
                 <div className='w-full h-full flex flex-col justify-center items-center'>
 
-                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-4 pt-6 '>
+                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-6 pt-6 '>
                      <img src={KynSanctuary} className='object-cover lg:object-contain h-[100%] ' alt='screen shot KynSanctuary' />
                 </div>
 
@@ -77,7 +77,7 @@ export const Project1 = () => {
                 </div>
                 <div className='w-full h-full flex flex-col justify-center items-center'>
 
-                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-4 pt-6 '>
+                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-6 pt-6 '>
                      <img src={KynDreamMap} className='object-cover lg:object-contain h-[100%] ' alt='screen shot KynDreamMap' />
                 </div>
 
@@ -86,7 +86,7 @@ export const Project1 = () => {
                 </div>
                 <div className='w-full h-full flex flex-col justify-center items-center'>
 
-                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-4 pt-6 '>
+                <div className='w-[100%] lg:w-full h-full md:pt-[7%] px-6 pt-6 '>
                      <img src={KynTeam} className='object-cover h-[100%] lg:object-contain ' alt='screen shot KynTeam' />
                 </div>
 
