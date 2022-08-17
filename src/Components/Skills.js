@@ -86,7 +86,7 @@ function Skills() {
 
   return (
     <div name='skills-page' className=' bg-[#0a193f] text-gray-300 px-[30px] py-[40px]  '>
-        <motion.div className=' md:h-screen h-screen top-[30px] md:top-[0] md:px-[100px] relative md:max-w-[80rem] md:mx-auto flex-col flex justify-start items-start'>
+        <motion.div className=' md:h-screen h-[100%] top-[30px] md:top-[0] md:px-[100px] relative md:max-w-[80rem] md:mx-auto flex-col flex justify-start items-start'>
            <h2 className='text-4xl font-bold inline border-b-4 border-pink  '>My Skills</h2>
           <h4 className='text-xl font-body text-left my-2'>// These are the skills and frameworks I have worked with..</h4>
       
